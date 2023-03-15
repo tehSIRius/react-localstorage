@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import reactMixin from 'react-mixin';
 
-import LocalStorageMixin from '../react-localstorage';
+import LocalStorageMixin from '../src/react-localstorage';
 
 @reactMixin.decorate(LocalStorageMixin)
 class ComponentUseDisplayName extends Component<{ localStorageKey?: boolean | string | (() => string | undefined | boolean), otherKey?: string }> {

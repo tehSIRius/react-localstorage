@@ -1,5 +1,5 @@
 'use strict';
-var warn = require('./lib/warning');
+var warn = require('./warning');
 
 var hasLocalStorage = true;
 var testKey = 'react-localstorage.mixin.test-key';

@@ -1,7 +1,14 @@
 import { type Component } from 'react';
 import testUtil from 'react-dom/test-utils';
 
-import { ComponentUseDisplayName, ComponentUseMethod, ComponentUseStateFilter, ComponentUseStateFilterFunction, ComponentUseStorageKey, ComponentWithNoSetting } from './TestComponents';
+import {
+    ComponentUseDisplayName,
+    ComponentUseMethod,
+    ComponentUseStateFilter,
+    ComponentUseStateFilterFunction,
+    ComponentUseStorageKey,
+    ComponentWithNoSetting
+} from './TestComponents';
 
 describe("react-localstorage", () => {
     beforeEach(() => {
