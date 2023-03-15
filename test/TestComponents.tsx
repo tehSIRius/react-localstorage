@@ -59,7 +59,7 @@ class ComponentUseStateFilter extends Component {
 }
 
 @reactMixin.decorate(LocalStorageMixin)
-class ComponentUseStateFilterFunc extends Component {
+class ComponentUseStateFilterFunction extends Component {
     static displayName = 'componentStateFilterFunc';
 
     getStateFilterKeys() {
@@ -78,5 +78,5 @@ export {
     ComponentUseStorageKey,
     ComponentWithNoSetting,
     ComponentUseStateFilter,
-    ComponentUseStateFilterFunc
+    ComponentUseStateFilterFunction
 };

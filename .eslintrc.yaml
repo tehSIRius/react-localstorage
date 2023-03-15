@@ -1,0 +1,23 @@
+root: true
+
+env:
+  node: true
+
+plugins:
+  - '@typescript-eslint'
+
+parserOptions:
+  project: true
+  tsconfigRootDir: .
+
+extends:
+    - eslint:recommended
+    - plugin:@typescript-eslint/recommended
+    - plugin:@typescript-eslint/recommended-requiring-type-checking
+    - plugin:@typescript-eslint/strict
+    - plugin:unicorn/recommended
+
+rules:
+    react/jsx-uses-react: off
+    react/react-in-jsx-scope: off
+    unicorn/filename-case: off

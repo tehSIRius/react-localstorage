@@ -1,16 +1,19 @@
 import { type Component } from 'react';
 import testUtil from 'react-dom/test-utils';
 
-import { ComponentUseDisplayName, ComponentUseMethod, ComponentUseStateFilter, ComponentUseStateFilterFunc, ComponentUseStorageKey, ComponentWithNoSetting } from './TestComponents';
+import { ComponentUseDisplayName, ComponentUseMethod, ComponentUseStateFilter, ComponentUseStateFilterFunction, ComponentUseStorageKey, ComponentWithNoSetting } from './TestComponents';
 
 describe("react-localstorage", () => {
     beforeEach(() => {
         localStorage.clear();
 
-        vi.spyOn(global.console, "warn").mockImplementation(() => null);
+        vi.spyOn(global.console, "warn").mockImplementation(() => {
+            // Placeholder
+        });
     });
 
     afterEach(() => {
+        // eslint-disable-next-line @typescript-eslint/unbound-method
         expect(global.console.warn).not.toBeCalled();
     });
 
@@ -89,7 +92,7 @@ describe("react-localstorage", () => {
     });
 
     it("Should Only Use State Keys That Match Filter Function", () => {
-        const component = testUtil.renderIntoDocument(<ComponentUseStateFilterFunc />) as unknown as Component<unknown, unknown>;
+        const component = testUtil.renderIntoDocument(<ComponentUseStateFilterFunction />) as unknown as Component<unknown, unknown>;
 
         component.setState({
             a: 'world',
@@ -142,13 +145,13 @@ describe("react-localstorage", () => {
     });
 
     it("Should Sync on beforeunload, Then Remove Itself", () => {
-        const eventMap: Map<Event | string, (() => unknown)> = new Map();
+        const eventMap = new Map<Event | string, (() => unknown)>();
         vi.stubGlobal('addEventListener', (event: Event | string, callback: () => unknown) => {
             eventMap.set(event, callback);
         });
         vi.stubGlobal('removeEventListener', (event: Event | string, callback: () => unknown) => {
             if (event === 'beforeunload' && eventMap.get(event) !== callback) {
-                throw new Error('');
+                throw new Error('Unexpected event!');
             }
 
             eventMap.delete(event);
