@@ -1,9 +1,9 @@
 import { Component } from 'react';
-import reactMixin from 'react-mixin';
+import { decorate } from 'react-mixin';
 
 import LocalStorageMixin from '../src/react-localstorage';
 
-@reactMixin.decorate(LocalStorageMixin)
+@decorate(LocalStorageMixin)
 class ComponentUseDisplayName extends Component<{ localStorageKey?: boolean | string | (() => string | undefined | boolean), otherKey?: string }> {
     static displayName = 'component1';
 
@@ -12,7 +12,7 @@ class ComponentUseDisplayName extends Component<{ localStorageKey?: boolean | st
     }
 }
 
-@reactMixin.decorate(LocalStorageMixin)
+@decorate(LocalStorageMixin)
 class ComponentUseStorageKey extends Component {
     static displayName = 'component2';
     static defaultProps = {
@@ -24,7 +24,7 @@ class ComponentUseStorageKey extends Component {
     }
 }
 
-@reactMixin.decorate(LocalStorageMixin)
+@decorate(LocalStorageMixin)
 class ComponentUseMethod extends Component {
     static displayName = 'ComponentUseMethod';
 
@@ -37,7 +37,7 @@ class ComponentUseMethod extends Component {
     }
 }
 
-@reactMixin.decorate(LocalStorageMixin)
+@decorate(LocalStorageMixin)
 class ComponentWithNoSetting extends Component {
     static displayName = 'ComponentWithNoSetting';
 
@@ -46,7 +46,7 @@ class ComponentWithNoSetting extends Component {
     }
 }
 
-@reactMixin.decorate(LocalStorageMixin)
+@decorate(LocalStorageMixin)
 class ComponentUseStateFilter extends Component {
     static displayName = 'componentStateFilter';
     static defaultProps = {
@@ -58,7 +58,7 @@ class ComponentUseStateFilter extends Component {
     }
 }
 
-@reactMixin.decorate(LocalStorageMixin)
+@decorate(LocalStorageMixin)
 class ComponentUseStateFilterFunction extends Component {
     static displayName = 'componentStateFilterFunc';
 
