@@ -16,32 +16,32 @@
  * @providesModule warning
  */
 
-"use strict";
-
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
  * This can be used to log issues in development environments in critical
  * paths. Removing the logging code for production environments will keep the
  * same logic and follow the same code paths.
  */
+type CustomWarning = (() => void) | ((condition: boolean, format: string, ...rest: string[]) => void);
 
-var warning = function() {};
+let warning: CustomWarning = () => {
+    // Empty function
+}
 
 if ("production" !== process.env.NODE_ENV) {
-  warning = function(condition, format ) {var args=Array.prototype.slice.call(arguments,2);
-    if (format === undefined) {
+  warning = function(condition, format, ...rest) {
+    if (!format) {
       throw new Error(
-        '`warning(condition, format, ...args)` requires a warning ' +
-        'message argument'
+        '`warning(condition, format, ...args)` requires a warning message argument'
       );
     }
 
     if (!condition) {
-      var argIndex = 0;
+      let index = 0;
       // eslint-disable-next-line no-console
-      console.warn('Warning: ' + format.replace(/%s/g, function()  {return args[argIndex++];}));
+      console.warn(`Warning: ${format.replace(/%s/g, () => rest[index++])}`);
     }
   };
 }
 
-module.exports = warning;
+export default warning;
